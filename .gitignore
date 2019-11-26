@@ -44,3 +44,12 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Custom dev ignore files
+dev/
+*-dev.md
+*-dev.sh
+*-dev.bat
+*-dev.com
+*-dev.sql
+
