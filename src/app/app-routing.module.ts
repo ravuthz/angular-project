@@ -1,8 +1,19 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
+import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
 
 
-const routes: Routes = [{ path: 'backend', loadChildren: () => import('./backend/backend.module').then(m => m.BackendModule) }, { path: 'frontend', loadChildren: () => import('./frontend/frontend.module').then(m => m.FrontendModule) }];
+const routes: Routes = [
+  { path: '', loadChildren: () => import('./frontend/frontend.module').then(m => m.FrontendModule) },
+  { path: 'admin', loadChildren: () => import('./backend/backend.module').then(m => m.BackendModule) },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
+  { path: '**', component: NotFoundComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
